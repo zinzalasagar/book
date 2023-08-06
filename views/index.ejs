@@ -1,0 +1,104 @@
+<html>
+    <head>
+
+        <link rel="stylesheet" href="/css/style.css">
+        
+    </head>
+    <body>
+
+        <a href="/viewRecord">viewRecord</a>
+
+        <form method="post" action="/insertRecord"> 
+
+            <table border="2">
+
+                <tr>
+                    <td>Enter Book Name : </td>
+                    <td><input type="text" name="name"></td>
+                </tr>
+
+                <tr>
+                    <td>Enter Book Price :</td>
+                    <td><input type="text" name="price"></td>
+                </tr>
+
+                <% var quantity = ["1","2","3", "4","5","6","7","8","9","10"] %>
+
+                <tr>
+                    <td> Select Quantity : </td>
+                    <td>
+                        <select name="quantity">
+                            <option value="">---Select Quantity---</option>
+                            <% for(var i=0; i<quantity.length; i++){ %>
+                                <option value="<%= quantity[i] %>"><%= quantity[i] %></option> 
+                            <% } %>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td> Book Type : </td>
+                    <td>
+                        <input type="checkbox" name="type[]" value="Action">Action
+                        <input type="checkbox" name="type[]" value="Comics">Comics
+                        <input type="checkbox" name="type[]" value="Horror">Horror
+                        <input type="checkbox" name="type[]" value="Religious">Religious
+                        <input type="checkbox" name="type[]" value="Fantasy">Fantasy
+                        <input type="checkbox" name="type[]" value="Adventure">Adventure
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Select Edition :</td>     
+                    <td>    
+                        <input type="radio" name="edition" value="1st">1st
+                        <input type="radio" name="edition" value="2nd">2nd
+                        <input type="radio" name="edition" value="3rd">3rd
+                        <input type="radio" name="edition" value="4th">4th
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><input type="submit" name="submit" value="Insert Record"></td>
+                </tr>
+
+            </table>
+
+        </form>
+
+        <table border="2">
+
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td>Type</td>
+                <td>Edition</td>
+                <td>Action</td>
+            </tr>
+        
+        
+            <% var i=1; for(var key of recordList){ %>
+        
+            <tr>
+                <td><%= i %></td>
+                <td><%= key.name %></td>
+                <td><%= key.price %></td>
+                <td><%= key.quantity %></td>
+                <td><%= key.type %></td>
+                <td><%= key.edition %></td>
+                <td><a href="/deleteRecord/<%= key.id %>">X</a> || <a href="/updateRecord/?student_id=<%= key.id %>">Update</a></td>
+            </tr>
+        
+            <% i++; } %>
+        
+        </table>
+        
+
+        
+
+    <script type="text/javascript" src="/assets/js/script.js"></script>
+
+    </body>
+</html>     

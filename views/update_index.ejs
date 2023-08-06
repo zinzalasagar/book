@@ -1,0 +1,51 @@
+<form method="post" action="/editRecord">
+
+    <input type="hidden" name="bk_id" value="<%= single.id %>">
+    Enter Name : <input type="text" name="name" value="<%= single.name %>"><br>
+    Enter Price : <input type="text" name="price" value="<%= single.price %>"><br>
+
+    <table>
+
+        <% var quantity = ["1","2","3", "4","5","6","7","8","9","10"] %>
+
+        <tr>
+            <td>
+                Select Quantity : 
+                <select name="quantity">
+                    <option value="">---Select Quantity---</option>
+                    <% for(var i=0; i<quantity.length; i++){ %>
+                        <option value="<%= quantity[i] %>"><%= quantity[i] %></option> 
+                    <% } %>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Book Type :
+                <input type="checkbox" name="type[]" value="Action" <% if(single.type.includes('Action')){ %> <%= 'checked'%> <% } %>>Action
+                <input type="checkbox" name="type[]" value="Comics" <% if(single.type.includes('Comics')){ %> <%= 'checked'%> <% } %>>Comics
+                <input type="checkbox" name="type[]" value="Horror" <% if(single.type.includes('Horror')){ %> <%= 'checked'%> <% } %>>Horror
+                <input type="checkbox" name="type[]" value="Religious" <% if(single.type.includes('Religious')){ %> <%= 'checked'%> <% } %>>Stories
+                <input type="checkbox" name="type[]" value="Fantasy" <% if(single.type.includes('Fantasy')){ %> <%= 'checked'%> <% } %>>Fantasy
+                <input type="checkbox" name="type[]" value="Adventure" <% if(single.type.includes('Adventure')){ %> <%= 'checked'%> <% } %>>Adventure
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Select Edition :
+                <input type="radio" name="edition" value="1st" <% if(single.edition=='1st'){ %><%= 'checked' %> <%} %>>1st
+                <input type="radio" name="edition" value="2nd" <% if(single.edition=='2nd'){ %><%= 'checked' %> <%} %>>2nd
+                <input type="radio" name="edition" value="3rd" <% if(single.edition=='3rd'){ %><%= 'checked' %> <%} %>>3rd
+                <input type="radio" name="edition" value="4th" <% if(single.edition=='4th'){ %><%= 'checked' %> <%} %>>4th
+            </td>
+        </tr>
+
+    </table>
+
+    <input type="submit" name="submit" value="editRecord"><br>
+
+    
+
+</form>

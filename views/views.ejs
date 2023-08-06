@@ -1,0 +1,28 @@
+<table border="2">
+
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Quantity</td>
+        <td>Type</td>
+        <td>Edition</td>
+        <td>Action</td>
+    </tr>
+
+
+    <% var i=1; for(var key of record){ %>
+
+    <tr>
+        <td><%= i %></td>
+        <td><%= key.name %></td>
+        <td><%= key.price %></td>
+        <td><%= key.quantity %></td>
+        <td><%= key.type %></td>
+        <td><%= key.edition %></td>
+        <td><a href="/deleteRecord/<%= key.id %>">X</a> || <a href="/updateRecord/?student_id=<%= key.id %>">Update</a></td>
+    </tr>
+
+    <% i++; } %>
+
+</table>
